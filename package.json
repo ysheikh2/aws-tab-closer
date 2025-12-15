@@ -1,0 +1,38 @@
+{
+  "name": "aws-tab-closer",
+  "version": "1.1.1",
+  "description": "Automatically closes tabs opened by AWS CLI login and AWS VPN",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ysheikh2/AWS-CLI-Login-Tab-Closer"
+  },
+  "author": "ysheikh2",
+  "scripts": {
+    "build": "./build.sh",
+    "clean": "rm -rf firefox chrome dist",
+    "prebuild:firefox": "./build.sh",
+    "prebuild:chrome": "./build.sh",
+    "test:firefox": "cd firefox && web-ext run --browser-console --devtools",
+    "test:chrome": "./build.sh && echo '\n📋 Chrome Extension Testing:\n\n1. Open Chrome/Edge and go to: chrome://extensions/\n2. Enable \"Developer mode\" (top-right toggle)\n3. Click \"Load unpacked\"\n4. Select the chrome/ folder from this project\n5. Test AWS CLI login: aws sso login\n6. Test AWS VPN connection\n\nFor automated testing with Puppeteer, run: yarn test:chrome:auto'",
+    "test:chrome:auto": "./build.sh && node test-chrome.js",
+    "lint:firefox": "cd firefox && web-ext lint",
+    "lint:chrome": "cd chrome && npx eslint *.js",
+    "lint": "npm run lint:firefox && npm run lint:chrome",
+    "build:firefox": "cd firefox && web-ext build --artifacts-dir=../dist/firefox --overwrite-dest",
+    "build:chrome": "bash -c 'mkdir -p dist/chrome && cd chrome && zip -r ../dist/chrome/aws-tab-closer-$npm_package_version.zip . -x \"*.DS_Store\"'",
+    "package": "npm run build && npm run build:firefox && npm run build:chrome",
+    "sign:firefox": "cd firefox && web-ext sign --channel=unlisted",
+    "publish:firefox": "cd firefox && web-ext sign --channel=listed"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^143.0.0",
+    "dotenv": "^17.2.3",
+    "eslint": "^9.39.2",
+    "web-ext": "^9.2.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.3"
+  },
+  "packageManager": "yarn@4.12.0"
+}

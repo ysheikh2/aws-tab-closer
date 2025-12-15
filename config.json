@@ -1,0 +1,52 @@
+{
+  "name": "AWS Tab Closer",
+  "version": "1.1.1",
+  "description": "Automatically closes tabs opened by AWS CLI login and AWS VPN",
+  "author": "ysheikh2",
+  "homepage_url": "https://github.com/ysheikh2/AWS-Tab-Closer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ysheikh2/AWS-CLI-Login-Tab-Closer"
+  },
+  "manifest": {
+    "manifest_version": 3,
+    "permissions": [],
+    "host_permissions": [],
+    "background": {
+      "firefox": {
+        "scripts": ["background.js"],
+        "persistent": false,
+        "type": "module"
+      },
+      "chrome": {
+        "service_worker": "background.js",
+        "type": "module"
+      }
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "http://127.0.0.1/*",
+          "http://localhost/*"
+        ],
+        "js": ["content.js"]
+      }
+    ]
+  },
+  "firefox": {
+    "id": "{493d1461-308e-4161-9cec-6e8e8c065dd1}",
+    "slug": "aws-tab-closer",
+    "amo_summary": "Automatically closes tabs opened by AWS CLI login and AWS VPN",
+    "amo_description": "An extension to automatically close the tab that AWS CLI login and AWS VPN open. Forked from <a href=\"https://github.com/thecodewarrior/AWS-VPN-Tab-Closer\">AWS-VPN-Tab-Closer</a>.\n\nWhen you authenticate with AWS CLI (e.g., aws sso login), a browser tab opens showing the OAuth callback page with a \"Request approved\" message. This extension detects that page and automatically closes it after the authentication completes.\n\nThis extension will only activate for tabs using URLs matching http://127.0.0.1/oauth/callback* or http://localhost/oauth/callback* and will close them once the success message appears. This will not affect the authentication process.",
+    "categories": ["tabs"],
+    "approval_notes": "The content script runs on all 127.0.0.1 and localhost URLs because manifest v2 doesn't support port wildcards in content_scripts matches patterns, but it only acts on OAuth callback pages with specific success messages",
+    "data_collection_permissions": {
+      "required": ["none"],
+      "optional": []
+    }
+  },
+  "chrome": {
+    "update_url": "https://clients2.google.com/service/update2/crx"
+  }
+}
