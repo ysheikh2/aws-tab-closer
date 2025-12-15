@@ -8,11 +8,11 @@ Forked from [AWS-VPN-Tab-Closer](https://github.com/thecodewarrior/AWS-VPN-Tab-C
 
 ### Firefox
 
-Download from [releases](../../releases) or [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/aws-tab-closer/).
+Download from [releases](../../releases).
 
 ### Chrome
 
-Download from [releases](../../releases) or [Chrome Web Store](https://chromewebstore.google.com/).
+Download from [releases](../../releases).
 
 ## How it works
 
