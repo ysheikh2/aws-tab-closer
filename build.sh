@@ -101,13 +101,17 @@ echo "  ✓ Firefox amo-metadata.json generated"
 
 # Generate Firefox web-ext config
 cat > firefox/web-ext-config.mjs << 'EOF'
-import 'dotenv/config'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import dotenv from 'dotenv'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+dotenv.config({ path: path.resolve(__dirname, '..', '.env') })
 
 const config = {
   sourceDir: "."
 };
 
-// Only add sign config if API keys are present
 if (process.env.API_KEY && process.env.API_SECRET) {
   config.sign = {
     apiKey: process.env.API_KEY,

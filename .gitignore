@@ -293,3 +293,8 @@ dist/
 # Generated browser-specific files (run ./build.sh to regenerate)
 firefox/
 chrome/
+
+
+act-release.json
+chrome.crx
+chrome.pem

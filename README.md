@@ -50,6 +50,11 @@ yarn lint
 
 # Package for release
 yarn package
+
+# Sign for firefox with
+yarn build
+source .env && yarn sign:firefox
+
 ```
 
 ### Project Structure
