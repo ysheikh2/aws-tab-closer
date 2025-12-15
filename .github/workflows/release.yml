@@ -1,0 +1,55 @@
+name: Release Extension
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Enable Corepack (Yarn from packageManager)
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y zip
+
+      - name: Build extensions
+        run: yarn build
+
+      - name: Package Firefox extension
+        run: yarn build:firefox
+
+      - name: Package Chrome extension
+        run: yarn build:chrome
+
+      - name: Rename and organize artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p release-artifacts
+          VERSION=$(node -p "require('./package.json').version")
+
+          FIREFOX_SRC="$(ls dist/firefox/*.zip | head -n 1)"
+          CHROME_SRC="$(ls dist/chrome/*.zip | head -n 1)"
+
+          cp "$FIREFOX_SRC" "release-artifacts/aws-tab-closer-firefox-${VERSION}.xpi"
+          cp "$CHROME_SRC" "release-artifacts/aws-tab-closer-chrome-${VERSION}.zip"
+
+      - name: Upload artifacts to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release-artifacts/*
