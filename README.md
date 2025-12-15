@@ -282,3 +282,7 @@ A: This is normal if you don't have AMO API keys set. The extension still works 
 
 **Q: How do I change the extension name or version?**  
 A: Edit `config.json`, then run `./build.sh` to regenerate all browser-specific files.
+
+## Privacy
+
+This extension does not collect, store, or transmit any user data. It only reads page content locally to detect AWS authentication success messages and automatically closes tabs.  No information leaves your browser.
