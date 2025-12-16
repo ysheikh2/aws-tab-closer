@@ -3,11 +3,11 @@
   "version": "1.1.5",
   "description": "Automatically closes tabs opened by AWS CLI login and AWS VPN",
   "author": "ysheikh2",
-  "homepage_url": "https://github.com/ysheikh2/AWS-Tab-Closer",
+  "homepage_url": "https://github.com/ysheikh2/aws-tab-closer",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ysheikh2/AWS-CLI-Login-Tab-Closer"
+    "url": "https://github.com/ysheikh2/aws-tab-closer"
   },
   "manifest": {
     "manifest_version": 3,
