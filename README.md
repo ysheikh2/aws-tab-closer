@@ -12,7 +12,7 @@ Download from [releases](../../releases).
 
 ### Chrome
 
-Download from [releases](../../releases) or [Chrome Web Store](https://chromewebstore.google.com/detail/aws-tab-closer/dehbffgnongnpnnondbigcffchedgmnl?authuser=0&hl=en-GB).
+Download from [Chrome Web Store](https://chromewebstore.google.com/detail/aws-tab-closer/dehbffgnongnpnnondbigcffchedgmnl?authuser=0&hl=en-GB) or [releases](../../releases).
 
 ## How it works
 
