@@ -1,6 +1,6 @@
 {
   "name": "aws-tab-closer",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Automatically closes tabs opened by AWS CLI login and AWS VPN",
   "license": "MIT",
   "repository": {
