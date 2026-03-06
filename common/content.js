@@ -1,7 +1,9 @@
 // AWS CLI OAuth callback page
 if ((window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") && 
     window.location.pathname.startsWith("/oauth/callback") &&
-    (document.body.innerText.includes("Request approved") || document.body.innerText.includes("AWS CLI has been given requested permissions"))) {
+    (document.body.innerText.includes("Request approved") ||
+     document.body.innerText.includes("AWS CLI has been given requested permissions") ||
+     document.body.innerText.includes("You can now close this tab."))) {
   __BROWSER_API__.runtime.sendMessage("close-tab");
 }
 
