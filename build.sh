@@ -89,6 +89,9 @@ const amoData = {
   description: {
     'en-GB': config.firefox.amo_description
   },
+  homepage: {
+    'en-GB': config.homepage_url
+  },
   categories: config.firefox.categories,
   version: {
     license: config.license,

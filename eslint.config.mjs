@@ -9,6 +9,8 @@ export default [
         chrome: "readonly",
         console: "readonly",
         document: "readonly",
+        MutationObserver: "readonly",
+        setTimeout: "readonly",
         window: "readonly"
       }
     },
